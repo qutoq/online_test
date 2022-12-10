@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row g-0">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+<div class="container py-3">
+    <ul class="list-group list-group-flush">
+        <div class="card-header"> <div class="flex">Личная информация <a href="/password_change">сменить пароль</a> </div> </div>
+        <h5>
+        <li class="list-group-item"> <i class="bi bi-person"></i> {{ user.first_name }} {{ user.last_name }}</li>
+        <li class="list-group-item"> <i class="bi bi-bug"></i> {{ user.username }}</li>
+        <li class="list-group-item"> <i class="bi bi-envelope"></i> {{ user.email }}</li>
+        </h5>
+    </ul>
+</div>
+<hr>
+<div class="container py-3">
+    <ul class="list-group list-group-flush">
+        <div class="card-header"> Статистика </div>
+        <h5>
+            <li class="list-group-item"> Пройденно тестов: {{ prof.count_test }} </li>
+            <li class="list-group-item"> Кол-во правильных ответов: {{ prof.count_ok }} </li>
+            <li class="list-group-item"> Всего ответов: {{ prof.count_total }} </li>
+            <li class="list-group-item"> Правильные ответы: {{ prec }} % </li>
+        </h5>
+    </ul>
+</div>
+    </div>
+</div>
+{% endblock content %}

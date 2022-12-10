@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Online tests</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+          .flex {
+             display: flex;
+             justify-content: space-between;
+          }
+      </style>
+    </head>
+
+    <body class="bg-light">
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Test</a>
+            <span class="user text-white">
+                {% if request.user.is_authenticated %}
+                    <i class="bi bi-person"></i>
+                    <a href="{% url 'app:profile' %}"> {{ request.user.username }}</a>
+                    <i class="bi bi-box-arrow-left"></i>
+                    <a href="{% url 'app:logout' %}">Выйти</a>
+                {% else %}
+                    <i class="bi bi-box-arrow-right"></i>
+                    <a href="{% url 'app:login' %}">Войти</a>
+                {% endif %}
+            </span>
+        </div>
+    </nav>
+
+    <div class="container">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<p></p>
+<div class="flex text-secondary">
+    <h4> Tecт: {{ test.name }} </h4>
+    <h4> Вопрос {{now}} из {{end}}</h4>
+</div>
+<hr>
+<h1 class="text-center"> {{ question.name }}</h1>
+<div class="container w-75">
+<div class="container row g-0 py-2">
+    <div class="col-md-6 py-1" >
+        <h4> {{ question.text }}</h4>
+    </div>
+    <div class="col-md-6 py-1">
+        <form method="post" action="/test/{{test.id}}">
+            {% csrf_token %}
+            {% for answer in answers %}
+                <div class="form-check">
+                    <h5>
+                        <input class="form-check-input" type="checkbox"  name="{{ answer.id }}" id="flexCheckIndeterminate">
+                        <label class="form-check-label" for="flexCheckIndeterminate"> {{answer.text}}</label>
+                    </h5>
+                </div>
+            {% endfor %}
+            <div class="text-end py-2"> <button type="submit" class="btn btn-success">Дальше</button> </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock content %}

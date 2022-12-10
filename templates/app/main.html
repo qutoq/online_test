@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for test in tests %}
+    <div class="cart py-3">
+        <h3>{{ test.name }}</h3>
+        <p>{{ test.text|linebreaksbr }}</p>
+        <a href="/test/{{ test.id }}" class="btn btn-success">Открыть тест</a>
+    </div>
+{% endfor %}
+{% endblock content %}

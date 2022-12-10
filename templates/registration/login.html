@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags%}
+{% block content %}
+<div class="container py-5 row g-0">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <h4> Для выполнения тестов необходимо авторизоваться</h4>
+        <div class="login-form">
+            <form action="{% url 'app:login' %}" method="post">
+                {{ form | crispy }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <p></p>
+                <p><input type="submit" class="btn btn-success" value="Войти"></p>
+            </form>
+        </div>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                У вас нет аккаунта? <a class="ml-2" href="/register">Зарегистрируйтесь</a>
+            </small>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+</div>
+{% endblock %}
